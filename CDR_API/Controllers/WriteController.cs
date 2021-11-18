@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FileProcessor;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -10,38 +12,21 @@ namespace CDR_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ReadController : ControllerBase
+    public class WriteController : ControllerBase
     {
-        // GET: api/<ReadController>
+        private readonly IConfiguration _config;
+
+        public WriteController(IConfiguration config)
+        {
+            _config = config;
+        }
         [HttpGet]
-        public IEnumerable<string> Get()
+        public void ProcessCDRRecords()
         {
-            return new string[] { "value1", "value2" };
+            CSVProcessor csvPro = new CSVProcessor();
+            csvPro.LoadCDRData(_config);
         }
 
-        // GET api/<ReadController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<ReadController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<ReadController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ReadController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+       
     }
 }

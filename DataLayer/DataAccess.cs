@@ -2,6 +2,7 @@
 using DataLayer.Models;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -43,6 +44,26 @@ namespace DataLayer
             parameters.Add("@ReturnCount", numberToReturn);
             parameters.Add("@TypeId", type);
             return (CDRModel)connectionString.ExecuteScalar("[GetMostExpensiveCallsForCallerID]", parameters, commandType: CommandType.StoredProcedure);
+        }
+
+        public void InsertCDRRecords(IConfiguration configuration, List<CDRModel> cdrList)
+        {
+            connectionString = GetCDRConnection(configuration);
+            foreach(var cdr in cdrList)
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@CallerId", cdr.CallerId);
+                parameters.Add("@Recipient", cdr.Recipient);
+                parameters.Add("@CallDate", cdr.CallDate);
+                parameters.Add("@EndTime", cdr.EndTime);
+                parameters.Add("@Duration", cdr.Duration);
+                parameters.Add("@Cost", cdr.Cost);
+                parameters.Add("@Reference", cdr.Reference);
+                parameters.Add("@Currency", cdr.Currency);
+                parameters.Add("@TypeId", cdr.TypeId);
+               connectionString.ExecuteScalar("[InsertCDRRecords]", parameters, commandType: CommandType.StoredProcedure);
+            }
+           
         }
     }
 }
