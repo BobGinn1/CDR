@@ -1,0 +1,33 @@
+USE CDR
+GO
+
+CREATE TABLE CallDetailRecord
+(
+ID INT PRIMARY KEY IDENTITY(1,1)
+,Caller_Id VARCHAR(14)
+,Recipient VARCHAR(255)
+,Call_Date DATETIME
+,End_Time TIME
+,Duration TIME
+,Cost DECIMAL(18,3)
+,Reference VARCHAR(255)
+,Currency VARCHAR(5)
+,TypeId INT
+)
+GO
+
+CREATE TABLE [Type]
+(
+ID INT PRIMARY KEY IDENTITY(1,1)
+,[Description] VARCHAR(50)
+)
+GO
+
+ALTER TABLE CallDetailRecord  WITH CHECK ADD  CONSTRAINT [FK_CDR_Type] FOREIGN KEY(TypeID)
+REFERENCES [Type] (ID)
+GO
+
+ALTER TABLE CallDetailRecord CHECK CONSTRAINT [FK_CDR_Type]
+GO
+
+
