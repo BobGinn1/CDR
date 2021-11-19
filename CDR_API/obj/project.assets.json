@@ -770,6 +770,7 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Dapper": "2.0.123",
+          "Logging": "1.0.0",
           "Microsoft.Extensions.Configuration": "6.0.0",
           "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
           "Microsoft.Extensions.Configuration.Binder": "6.0.0",
@@ -787,6 +788,7 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "DataLayer": "1.0.0",
+          "Logging": "1.0.0",
           "System.Configuration.ConfigurationManager": "6.0.0"
         },
         "compile": {
@@ -794,6 +796,22 @@
         },
         "runtime": {
           "bin/placeholder/FileProcessor.dll": {}
+        }
+      },
+      "Logging/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration": "6.0.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
+          "Microsoft.Extensions.Configuration.Binder": "6.0.0",
+          "System.Configuration.ConfigurationManager": "6.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Logging.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Logging.dll": {}
         }
       }
     }
@@ -2811,6 +2829,11 @@
       "type": "project",
       "path": "../FileProcessor/FileProcessor.csproj",
       "msbuildProject": "../FileProcessor/FileProcessor.csproj"
+    },
+    "Logging/1.0.0": {
+      "type": "project",
+      "path": "../Logging/Logging.csproj",
+      "msbuildProject": "../Logging/Logging.csproj"
     }
   },
   "projectFileDependencyGroups": {

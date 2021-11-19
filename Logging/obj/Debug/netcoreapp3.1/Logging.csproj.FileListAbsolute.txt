@@ -1,0 +1,9 @@
+C:\Dev\Repos\CDR_API\Logging\bin\Debug\netcoreapp3.1\Logging.deps.json
+C:\Dev\Repos\CDR_API\Logging\bin\Debug\netcoreapp3.1\Logging.dll
+C:\Dev\Repos\CDR_API\Logging\obj\Debug\netcoreapp3.1\Logging.AssemblyInfoInputs.cache
+C:\Dev\Repos\CDR_API\Logging\obj\Debug\netcoreapp3.1\Logging.AssemblyInfo.cs
+C:\Dev\Repos\CDR_API\Logging\bin\Debug\netcoreapp3.1\Logging.pdb
+C:\Dev\Repos\CDR_API\Logging\obj\Debug\netcoreapp3.1\Logging.csprojAssemblyReference.cache
+C:\Dev\Repos\CDR_API\Logging\obj\Debug\netcoreapp3.1\Logging.csproj.CoreCompileInputs.cache
+C:\Dev\Repos\CDR_API\Logging\obj\Debug\netcoreapp3.1\Logging.dll
+C:\Dev\Repos\CDR_API\Logging\obj\Debug\netcoreapp3.1\Logging.pdb

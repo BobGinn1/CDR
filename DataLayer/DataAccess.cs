@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using Logging;
 
 namespace DataLayer
 {
@@ -13,7 +14,7 @@ namespace DataLayer
         private IDbConnection connectionString;
         public IDbConnection GetCDRConnection(IConfiguration configuration)
         {
-            return connectionString = new SqlConnection(configuration.GetConnectionString("CDRDatabase"));
+            return connectionString = new SqlConnection(configuration.GetValue<string>("ConnectionStrings:CDRDatabase"));
         }
 
         public CDRModel GetCDRByID(IConfiguration configuration, int cdrId)
@@ -49,19 +50,29 @@ namespace DataLayer
         public void InsertCDRRecords(IConfiguration configuration, List<CDRModel> cdrList)
         {
             connectionString = GetCDRConnection(configuration);
-            foreach(var cdr in cdrList)
+            Logger logger = new Logger();
+            var parameters = new DynamicParameters();
+            foreach (var cdr in cdrList)
             {
-                var parameters = new DynamicParameters();
-                parameters.Add("@CallerId", cdr.CallerId);
-                parameters.Add("@Recipient", cdr.Recipient);
-                parameters.Add("@CallDate", cdr.CallDate);
-                parameters.Add("@EndTime", cdr.EndTime);
-                parameters.Add("@Duration", cdr.Duration);
-                parameters.Add("@Cost", cdr.Cost);
-                parameters.Add("@Reference", cdr.Reference);
-                parameters.Add("@Currency", cdr.Currency);
-                parameters.Add("@TypeId", cdr.TypeId);
-               connectionString.ExecuteScalar("[InsertCDRRecords]", parameters, commandType: CommandType.StoredProcedure);
+                try
+                {
+                    
+                    parameters.Add("@CallerId", cdr.CallerId);
+                    parameters.Add("@Recipient", cdr.Recipient);
+                    parameters.Add("@CallDate", cdr.CallDate);
+                    parameters.Add("@EndTime", cdr.EndTime);
+                    parameters.Add("@Duration", cdr.Duration);
+                    parameters.Add("@Cost", cdr.Cost);
+                    parameters.Add("@Reference", cdr.Reference);
+                    parameters.Add("@Currency", cdr.Currency);
+                    parameters.Add("@TypeId", cdr.TypeId);
+                    connectionString.ExecuteScalar("[InsertCDRRecords]", parameters, commandType: CommandType.StoredProcedure);
+                }
+                catch (Exception ex)
+                {
+                    logger.WriteToLog(configuration, "Error Message: " + ex.Message);
+                    logger.WriteToLog(configuration, "Failing insertion: " + parameters.ToString());
+                }
             }
            
         }

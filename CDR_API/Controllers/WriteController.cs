@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace CDR_API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class WriteController : ControllerBase
     {
@@ -20,13 +20,17 @@ namespace CDR_API.Controllers
         {
             _config = config;
         }
+
         [HttpGet]
-        public void ProcessCDRRecords()
+        [Route("Upload")]
+        public void UploadFile()
         {
+            var fileDirectory = _config.GetValue<string>("Directories:File");
+            
             CSVProcessor csvPro = new CSVProcessor();
-            csvPro.LoadCDRData(_config);
+            csvPro.LoadCDRData(_config, fileDirectory);
+            
         }
 
-       
     }
 }

@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace CDR_API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ReadController : Controller
     {
@@ -22,7 +22,8 @@ namespace CDR_API.Controllers
             _config = config;
         }
         // GET: api/<ReadController>
-        [HttpGet]
+        [HttpPost]
+        [Route("GetSingleCDR")]
         public IActionResult GetSingleCDR(int cdrId)
         {
            DataAccess dataAccess = new DataAccess();
@@ -30,6 +31,24 @@ namespace CDR_API.Controllers
            return Json(new { data = cdr });
         }
 
-       
+        [HttpPost]
+        [Route("GetCallCountAndDurationByDateForCallerId")]
+        public IActionResult GetCallCountAndDurationByDateForCallerId(DateTime start, DateTime end, string callerId, CallTypeModel type = null)
+        {
+            DataAccess dataAccess = new DataAccess();
+            CDRModel cdr = dataAccess.GetCallCountAndDurationByDateForCallerId(_config, start, end, callerId, type);
+            return Json(new { data = cdr });
+        }
+
+        [HttpPost]
+        [Route("GetMostExpensiveCallCountByDateForCallerId")]
+        public IActionResult GetMostExpensiveCallCountByDateForCallerId(DateTime start, DateTime end, string callerId, int numberToReturn, CallTypeModel type = null)
+        {
+            DataAccess dataAccess = new DataAccess();
+            CDRModel cdr = dataAccess.GetMostExpensiveCallCountByDateForCallerId(_config, start, end, callerId, numberToReturn, type);
+            return Json(new { data = cdr });
+        }
+
+
     }
 }
