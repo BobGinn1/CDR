@@ -55,7 +55,10 @@ namespace FileProcessor
                 {
                     File.Delete(completeDirectory + Path.GetFileName(file));
                 }
-
+                if (!File.Exists(completeDirectory))
+                {
+                    DirectoryInfo di = Directory.CreateDirectory(completeDirectory);
+                }
                 File.Move(file, completeDirectory + Path.GetFileName(file));
             }
             dataAccess.InsertCDRRecords(configuration, cdrList);

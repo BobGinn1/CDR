@@ -1,0 +1,14 @@
+C:\Dev\Repos\CDR_API\FileProcessor\bin\Debug\netcoreapp3.1\FileProcessor.deps.json
+C:\Dev\Repos\CDR_API\FileProcessor\bin\Debug\netcoreapp3.1\FileProcessor.dll
+C:\Dev\Repos\CDR_API\FileProcessor\bin\Debug\netcoreapp3.1\FileProcessor.pdb
+C:\Dev\Repos\CDR_API\FileProcessor\bin\Debug\netcoreapp3.1\DataLayer.dll
+C:\Dev\Repos\CDR_API\FileProcessor\bin\Debug\netcoreapp3.1\Logging.dll
+C:\Dev\Repos\CDR_API\FileProcessor\bin\Debug\netcoreapp3.1\DataLayer.pdb
+C:\Dev\Repos\CDR_API\FileProcessor\bin\Debug\netcoreapp3.1\Logging.pdb
+C:\Dev\Repos\CDR_API\FileProcessor\obj\Debug\netcoreapp3.1\FileProcessor.csprojAssemblyReference.cache
+C:\Dev\Repos\CDR_API\FileProcessor\obj\Debug\netcoreapp3.1\FileProcessor.AssemblyInfoInputs.cache
+C:\Dev\Repos\CDR_API\FileProcessor\obj\Debug\netcoreapp3.1\FileProcessor.AssemblyInfo.cs
+C:\Dev\Repos\CDR_API\FileProcessor\obj\Debug\netcoreapp3.1\FileProcessor.csproj.CoreCompileInputs.cache
+C:\Dev\Repos\CDR_API\FileProcessor\obj\Debug\netcoreapp3.1\FileProcessor.csproj.CopyComplete
+C:\Dev\Repos\CDR_API\FileProcessor\obj\Debug\netcoreapp3.1\FileProcessor.dll
+C:\Dev\Repos\CDR_API\FileProcessor\obj\Debug\netcoreapp3.1\FileProcessor.pdb

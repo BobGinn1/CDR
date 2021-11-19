@@ -8,7 +8,7 @@ ID INT PRIMARY KEY IDENTITY(1,1)
 ,Recipient VARCHAR(255)
 ,Call_Date DATETIME
 ,End_Time TIME
-,Duration TIME
+,Duration INT
 ,Cost DECIMAL(18,3)
 ,Reference VARCHAR(255)
 ,Currency VARCHAR(5)
