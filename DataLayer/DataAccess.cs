@@ -25,8 +25,22 @@ namespace DataLayer
             parameters.Add("@CDRId", cdrId);
             return connectionString.Query<CDRModel>("[GetCDRByID]", parameters, commandType: CommandType.StoredProcedure).FirstOrDefault();
         }
+        private DateTime ValidateAndProtectDates(IConfiguration configuration, DateTime start, DateTime end)
+        {
+            var maxDifference = configuration.GetValue<int>("DateDifference:MaxAllowedDifference");
+            if (start.AddMonths(maxDifference) < end)
+            {
+                end = start.AddMonths(maxDifference);
+            }
+            if (start.AddMonths(-maxDifference) > end)
+            {
+                end = start.AddMonths(-maxDifference);
+            }
+            return end;
+        }
         public List<CDRModel> GetCallCountAndDurationByDateForCallerId(IConfiguration configuration, DateTime start, DateTime end, string callerId, int? type = null)
         {
+            end = ValidateAndProtectDates(configuration, start, end);
             connectionString = GetCDRConnection(configuration);
             var parameters = new DynamicParameters();
             parameters.Add("@Start", start);
@@ -39,6 +53,7 @@ namespace DataLayer
         public List<CDRModel> GetMostExpensiveCallCountByDateForCallerId(IConfiguration configuration, DateTime start, DateTime end, string callerId, int numberToReturn, int? type = null)
         {
             connectionString = GetCDRConnection(configuration);
+            end = ValidateAndProtectDates(configuration, start, end);
             var parameters = new DynamicParameters();
             parameters.Add("@Start", start);
             parameters.Add("@End", end);

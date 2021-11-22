@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using Assert = NUnit.Framework.Assert;
 
 namespace Tests
@@ -12,6 +13,7 @@ namespace Tests
     public class DataTests
     {
         private IConfiguration _config;
+        private DataAccess da = new DataAccess();
 
         public DataTests()
         {
@@ -31,13 +33,25 @@ namespace Tests
                 .Build();
             return config;
         }
-
         [Test]
-        public void GetSingleCDR_DataCheck()
+        public void GetCallCountAndDuration_ShouldReturnListCDR()
         {
-            
-            var clientId = _config.GetValue<string>("ConnectionStrings:CDRDatabase");
-            DataAccess da = new DataAccess();
+            var cdr = MockSingleCDR();
+            var result = da.GetCallCountAndDurationByDateForCallerId(_config, DateTime.Now, DateTime.Now.AddDays(1), "442036000000");
+
+            Assert.Contains(new CDRModel(), result);
+        }
+        [Test]
+        public void GetMostExpensiveCallCountByDateForCallerId_ShouldReturnListCDR()
+        {
+            var cdr = MockSingleCDR();
+            var result = da.GetCallCountAndDurationByDateForCallerId(_config, DateTime.Now, DateTime.Now.AddDays(1), "442036000000");
+
+            Assert.Contains(new CDRModel(), result);
+        }
+        [Test]
+        public void GetSingleCDR_ShouldReturnSingleCDR()
+        {
             var cdr = MockSingleCDR();
             var result = da.GetCDRByID(_config, 5) as CDRModel;
             var expectedJson = JsonConvert.SerializeObject(cdr);
