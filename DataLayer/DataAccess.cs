@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Logging;
+using System.Linq;
 
 namespace DataLayer
 {
@@ -22,9 +23,9 @@ namespace DataLayer
             connectionString = GetCDRConnection(configuration);
             var parameters = new DynamicParameters();
             parameters.Add("@CDRId", cdrId);
-            return (CDRModel)connectionString.ExecuteScalar("[GetCDRByID]", parameters, commandType: CommandType.StoredProcedure);
+            return connectionString.Query<CDRModel>("[GetCDRByID]", parameters, commandType: CommandType.StoredProcedure).FirstOrDefault();
         }
-        public CDRModel GetCallCountAndDurationByDateForCallerId(IConfiguration configuration, DateTime start, DateTime end, string callerId, CallTypeModel type = null)
+        public List<CDRModel> GetCallCountAndDurationByDateForCallerId(IConfiguration configuration, DateTime start, DateTime end, string callerId, int? type = null)
         {
             connectionString = GetCDRConnection(configuration);
             var parameters = new DynamicParameters();
@@ -32,10 +33,10 @@ namespace DataLayer
             parameters.Add("@End", end);
             parameters.Add("@CallerId", callerId);
             parameters.Add("@TypeId", type);
-            return (CDRModel)connectionString.ExecuteScalar("[GetCallCountAndDurationByDate]", parameters, commandType: CommandType.StoredProcedure);
+            return connectionString.Query<CDRModel>("[GetCallCountAndDurationByDate]", parameters, commandType: CommandType.StoredProcedure).ToList();
         }
 
-        public CDRModel GetMostExpensiveCallCountByDateForCallerId(IConfiguration configuration, DateTime start, DateTime end, string callerId, int numberToReturn, CallTypeModel type = null)
+        public List<CDRModel> GetMostExpensiveCallCountByDateForCallerId(IConfiguration configuration, DateTime start, DateTime end, string callerId, int numberToReturn, int? type = null)
         {
             connectionString = GetCDRConnection(configuration);
             var parameters = new DynamicParameters();
@@ -44,7 +45,7 @@ namespace DataLayer
             parameters.Add("@CallerId", callerId);
             parameters.Add("@ReturnCount", numberToReturn);
             parameters.Add("@TypeId", type);
-            return (CDRModel)connectionString.ExecuteScalar("[GetMostExpensiveCallsForCallerID]", parameters, commandType: CommandType.StoredProcedure);
+            return connectionString.Query<CDRModel>("[GetMostExpensiveCallsForCallerID]", parameters, commandType: CommandType.StoredProcedure).ToList();
         }
 
         public void InsertCDRRecords(IConfiguration configuration, List<CDRModel> cdrList)

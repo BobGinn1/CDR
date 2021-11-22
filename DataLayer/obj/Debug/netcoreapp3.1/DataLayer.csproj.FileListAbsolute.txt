@@ -1,0 +1,12 @@
+C:\Dev\Repos\CDR_API\DataLayer\bin\Debug\netcoreapp3.1\DataLayer.deps.json
+C:\Dev\Repos\CDR_API\DataLayer\bin\Debug\netcoreapp3.1\DataLayer.dll
+C:\Dev\Repos\CDR_API\DataLayer\bin\Debug\netcoreapp3.1\DataLayer.pdb
+C:\Dev\Repos\CDR_API\DataLayer\bin\Debug\netcoreapp3.1\Logging.dll
+C:\Dev\Repos\CDR_API\DataLayer\bin\Debug\netcoreapp3.1\Logging.pdb
+C:\Dev\Repos\CDR_API\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.csprojAssemblyReference.cache
+C:\Dev\Repos\CDR_API\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.AssemblyInfoInputs.cache
+C:\Dev\Repos\CDR_API\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.AssemblyInfo.cs
+C:\Dev\Repos\CDR_API\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.csproj.CoreCompileInputs.cache
+C:\Dev\Repos\CDR_API\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.csproj.CopyComplete
+C:\Dev\Repos\CDR_API\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.dll
+C:\Dev\Repos\CDR_API\DataLayer\obj\Debug\netcoreapp3.1\DataLayer.pdb

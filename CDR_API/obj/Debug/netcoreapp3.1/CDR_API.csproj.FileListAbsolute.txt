@@ -73,8 +73,6 @@ C:\Dev\Repos\CDR_API\CDR_API\bin\Debug\netcoreapp3.1\Logging.pdb
 C:\Dev\Repos\CDR_API\CDR_API\obj\Debug\netcoreapp3.1\CDR_API.csprojAssemblyReference.cache
 C:\Dev\Repos\CDR_API\CDR_API\obj\Debug\netcoreapp3.1\CDR_API.AssemblyInfoInputs.cache
 C:\Dev\Repos\CDR_API\CDR_API\obj\Debug\netcoreapp3.1\CDR_API.AssemblyInfo.cs
-C:\Dev\Repos\CDR_API\CDR_API\obj\Debug\netcoreapp3.1\CDR_API.csproj.CoreCompileInputs.cache
-C:\Dev\Repos\CDR_API\CDR_API\obj\Debug\netcoreapp3.1\CDR_API.MvcApplicationPartsAssemblyInfo.cache
 C:\Dev\Repos\CDR_API\CDR_API\obj\Debug\netcoreapp3.1\CDR_API.RazorTargetAssemblyInfo.cache
 C:\Dev\Repos\CDR_API\CDR_API\obj\Debug\netcoreapp3.1\CDR_API.csproj.CopyComplete
 C:\Dev\Repos\CDR_API\CDR_API\obj\Debug\netcoreapp3.1\staticwebassets\CDR_API.StaticWebAssets.Manifest.cache
@@ -82,3 +80,6 @@ C:\Dev\Repos\CDR_API\CDR_API\obj\Debug\netcoreapp3.1\staticwebassets\CDR_API.Sta
 C:\Dev\Repos\CDR_API\CDR_API\obj\Debug\netcoreapp3.1\CDR_API.dll
 C:\Dev\Repos\CDR_API\CDR_API\obj\Debug\netcoreapp3.1\CDR_API.pdb
 C:\Dev\Repos\CDR_API\CDR_API\obj\Debug\netcoreapp3.1\CDR_API.genruntimeconfig.cache
+C:\Dev\Repos\CDR_API\CDR_API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Dev\Repos\CDR_API\CDR_API\obj\Debug\netcoreapp3.1\CDR_API.csproj.CoreCompileInputs.cache
+C:\Dev\Repos\CDR_API\CDR_API\obj\Debug\netcoreapp3.1\CDR_API.MvcApplicationPartsAssemblyInfo.cache
