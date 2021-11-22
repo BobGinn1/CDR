@@ -1,3 +1,18 @@
+TECH CHOICES
+------------
+Data access - Dapper as it's faster to get running initially, is one of the fastest ORMs available, and gives the dev greater control over SQL generated
+.Net core - Greater flexibility if scalablity becomes required in the future
+C# - The language I'm most familiar with, well suited to API development
+Data storage - As the database is not cloud based SQL server is the most suitable for local data storage
+
+OTHER CONSIDERATIONS
+--------------------
+Given more time I would: 
+
+Expand the test suite
+Implement a propper logging solution - Probably Log4Net
+
+
 INSTRUCTIONS
 -------------
 
