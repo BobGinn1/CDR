@@ -45,7 +45,7 @@ namespace Tests
         public void GetMostExpensiveCallCountByDateForCallerId_ShouldReturnListCDR()
         {
             var cdr = MockSingleCDR();
-            var result = da.GetCallCountAndDurationByDateForCallerId(_config, DateTime.Now, DateTime.Now.AddDays(1), "442036000000");
+            var result = da.GetMostExpensiveCallCountByDateForCallerId(_config, DateTime.Now, DateTime.Now.AddDays(1), "442036000000", 10,);
 
             Assert.Contains(new CDRModel(), result);
         }

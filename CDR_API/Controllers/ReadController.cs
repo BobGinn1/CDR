@@ -32,23 +32,36 @@ namespace CDR_API.Controllers
            return Json(new { data = cdr });
         }
 
-        [HttpPost]
-        [Route("GetCallCountAndDurationByDateForCallerId")]
-        public IActionResult GetCallCountAndDurationByDateForCallerId(string data)
+        [HttpGet]
+        [Route("GetCallCountAndDurationByDateForCallerId/{start}/{end}/{callerId}/{typeId}")]
+        public IActionResult GetCallCountAndDurationByDateForCallerId(DateTime start, DateTime end, string callerId, int? typeId = null)
         {
-
-            var search = JsonConvert.DeserializeObject<CallCountSearchModel>(data);
             DataAccess dataAccess = new DataAccess();
-            List<CDRModel> cdr = dataAccess.GetCallCountAndDurationByDateForCallerId(_config, search.Start, search.End, search.CallerId, search.Type);
+            List<CDRModel> cdr = dataAccess.GetCallCountAndDurationByDateForCallerId(_config, start, end, callerId, typeId);
             return Json(new { data = cdr });
         }
         [HttpGet]
-        [Route("GetMostExpensiveCallCountByDateForCallerId")]
-        public IActionResult GetMostExpensiveCallCountByDateForCallerId(string data)
+        [Route("GetCallCountAndDurationByDateForCallerId/{start}/{end}/{callerId}")]
+        public IActionResult GetCallCountAndDurationByDateForCallerId(DateTime start, DateTime end, string callerId)
         {
-            var search = JsonConvert.DeserializeObject<MostExpensiveSearchModel>(data);
             DataAccess dataAccess = new DataAccess();
-            List<CDRModel> cdr = dataAccess.GetMostExpensiveCallCountByDateForCallerId(_config, search.Start, search.End, search.CallerId, search.NumberToReturn, search.Type);
+            List<CDRModel> cdr = dataAccess.GetCallCountAndDurationByDateForCallerId(_config, start, end, callerId, null);
+            return Json(new { data = cdr });
+        }
+        [HttpGet]
+        [Route("GetMostExpensiveCallCountByDateForCallerId/{start}/{end}/{callerId}/{numberToReturn}/{typeId}")]
+        public IActionResult GetMostExpensiveCallCountByDateForCallerId(DateTime start, DateTime end, string callerId, int numberToReturn, int? typeId = null)
+        {
+            DataAccess dataAccess = new DataAccess();
+            List<CDRModel> cdr = dataAccess.GetMostExpensiveCallCountByDateForCallerId(_config, start, end, callerId, numberToReturn, typeId);
+            return Json(new { data = cdr });
+        }
+        [HttpGet]
+        [Route("GetMostExpensiveCallCountByDateForCallerId/{start}/{end}/{callerId}/{numberToReturn}/")]
+        public IActionResult GetMostExpensiveCallCountByDateForCallerId(DateTime start, DateTime end, string callerId, int numberToReturn)
+        {
+            DataAccess dataAccess = new DataAccess();
+            List<CDRModel> cdr = dataAccess.GetMostExpensiveCallCountByDateForCallerId(_config, start, end, callerId, numberToReturn, null);
             return Json(new { data = cdr });
         }
 
